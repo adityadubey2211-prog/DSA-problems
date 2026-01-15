@@ -9,7 +9,7 @@ void getAllsubset(vector<int>& nums, vector<vector<int>>& allsubset, int i, vect
     getAllsubset(nums, allsubset, i + 1, ans);
     ans.pop_back();
     int idx = i+1;
-    while(idx < nums.size() && nums[idx] == nums[idx+1]){
+    while(idx < nums.size() && nums[idx] == nums[idx-1]){
         idx++;
     }
     getAllsubset(nums, allsubset, idx, ans);
