@@ -23,9 +23,10 @@ void print(vector<vector<int>>& allsubset){
     }
 }
 int main(){
-    vector<int> nums = {1,2,2};
+    vector<int> nums = {2,2,1};
     vector<vector<int>> allsubset;
     vector<int> ans;
+    sort(nums.begin(), nums.end());
     getAllsubset(nums, allsubset, 0, ans);
     print(allsubset);
     return 0;
