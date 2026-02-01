@@ -17,4 +17,4 @@ int main(){
     }
     cout<<endl;
     return 0;
-}//two ponter approch
+}//two pointer approch

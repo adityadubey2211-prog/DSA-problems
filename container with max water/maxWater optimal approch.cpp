@@ -28,4 +28,4 @@ int main()
     int ans = maxarea(height);
     cout << ans;
     return 0;
-}
+}  

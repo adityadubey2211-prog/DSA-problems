@@ -5,7 +5,7 @@ int binarysearch(vector<int> &arr, int tar)
     int st = 0, end = arr.size() - 1;
     while (st <= end)
     {
-        int mid = st + (end - st) / 2; // no overflow occur
+        int mid = st + (end - st) / 2; // no overflow occur(safe)
         if (arr[mid] < tar)
         {
             st = mid + 1;

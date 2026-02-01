@@ -15,4 +15,4 @@ int main(){
     int size=5;
     cout<<uniquevofarr(arr,size)<<endl;
     return 0;
-}
+} 
