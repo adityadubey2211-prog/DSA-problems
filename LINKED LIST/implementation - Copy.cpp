@@ -102,7 +102,7 @@ class List{
             if(temp->data == val){
                 cout<<"Element found at index "<<idx<<endl;
                 return;
-            }
+            } 
             temp = temp->next;
             idx++;
         }

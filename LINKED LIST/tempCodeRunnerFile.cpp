@@ -1,40 +1,56 @@
-#include<bits/stdc++.h>
+# include <bits/stdc++.h>
 using namespace std;
-class ListNode{
+class Node{
     public:
-    int val;
-    ListNode*Next;
-    ListNode(int val){
-        this->val = val;
-        Next = NULL;
+    int data;
+    Node*next;
+    Node(int val){
+        data = val;
+        next = NULL;
     }
-
-
 };
-ListNode* middleofll(ListNode* head){
-    if(head == NULL){
-        return NULL;
+    Node*cycle(Node*head){
+        Node*slow ;
+        Node*fast;
+        slow = fast = head;
+        bool iscycle = false;
+        while(fast != NULL && fast -> next != NULL){
+            slow = slow -> next;
+            fast = fast -> next -> next;
+            if(slow == fast){
+                iscycle = true;
+                break;
+            }
+        }
+        if(!iscycle){
+            return NULL;
+        }
+        slow = head;
+        while(slow != fast){
+            slow = slow  -> next;
+            fast = fast -> next;
+        }
+        return slow;
+                
     }
-    ListNode* slow = head;
-    ListNode* fast = head;
-    while(fast != NULL && fast -> Next != NULL){
-        fast = fast -> Next -> Next;
-        slow = slow -> Next;
-    }
-    return slow;
-}
+
 int main(){
-    ListNode* head = new ListNode(1);
-    head->Next = new ListNode(2);
-    head->Next->Next = new ListNode(3);
-    head->Next->Next->Next = new ListNode(4);
-    head->Next->Next->Next->Next = new ListNode(5);
-    ListNode* middle = middleofll(head);
-    if(middle != NULL){
-        cout<<"Middle element is: "<<middle->val<<endl;
+    Node* n1 = new Node(10);
+    Node* n2 = new Node(20);
+    Node* n3 = new Node(30);
+    Node* n4 = new Node(40);
+    Node* n5 = new Node(50);
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n4->next = n5;
+    n5->next = n3;
+    Node* head = n1;
+    Node* ans = cycle(head);
+    if(ans){
+        cout<<"Cycle detected at node with value: "<<ans->data<<endl;
     }
     else{
-        cout<<"List is empty"<<endl;
+        cout<<"No cycle detected."<<endl;
     }
-    return 0;
 }
